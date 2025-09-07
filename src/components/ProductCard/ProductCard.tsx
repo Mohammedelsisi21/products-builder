@@ -4,11 +4,8 @@ import { Button } from '../UiComponent/Button'
 import { SpanColor } from '../UiComponent/SpanColor'
 
 import Shoes from './../../assets/shoes-6.jpg'
-interface IProps {
-    
-}
 
-const ProductCard = ({} : IProps) => {
+const ProductCard = () => {
     return (<>
     <div className='p-2 border border-gray-300 flex flex-col space-y-2 rounded-md'>
         <Image src={Shoes} alt='image name' className='mb-4 rounded-md shadow' />
