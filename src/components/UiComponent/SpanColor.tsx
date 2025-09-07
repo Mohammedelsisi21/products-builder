@@ -1,9 +1,10 @@
+import type { ButtonHTMLAttributes } from "react"
 
-interface IProps {
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className: string
 }
-export const SpanColor = ({ className } : IProps) => {
+export const SpanColor = ({ className, ...rest } : IProps) => {
   return (
-    <span className={className}/>
+    <span className={`${className} w-5 h-5 rounded-full cursor-pointer`} { ...rest } />
   )
 }

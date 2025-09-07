@@ -12,9 +12,9 @@ const ProductCard = () => {
         <h3 className='text-2xl'>Classic White Sneakers</h3>
         <p className='text-gray-500 font-light'>Stylish and comfortable white sneakers designed for everyday wear. Made with durable material and cushioned soles, perfect for casual outings, sports, or daily activities</p>
         <div className='flex items-center space-x-2'>
-            <SpanColor className='w-5 h-5 rounded-full bg-indigo-500' />
-            <SpanColor className='w-5 h-5 rounded-full bg-yellow-500' />
-            <SpanColor className='w-5 h-5 rounded-full bg-red-500' />
+            <SpanColor className='bg-indigo-500' onClick={() => console.log("sas")}/>
+            <SpanColor className='bg-yellow-500' />
+            <SpanColor className='bg-red-500' />
         </div>
         <div className='flex justify-between items-center my-3'>
             <span>$59.99</span>
