@@ -30,8 +30,8 @@ return (<>
             <Image src={category.image} alt={category.name} className='w-10 h-10 border border-gray-300 rounded-full object-center' />
         </div>
         <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 items-center'>
-            <Button className='bg-indigo-600' width='w-full'>Edit</Button>
-            <Button className='bg-red-600' width="w-full">delete</Button>
+            <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full'>Edit</Button>
+            <Button className='bg-red-600 hover:bg-red-700' width="w-full">delete</Button>
         </div>
     </div>
 </>)

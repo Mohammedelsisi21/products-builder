@@ -11,3 +11,11 @@ export interface IProduct {
         image: string
     }
 }
+
+
+export interface IFormList {
+    id: string,
+    name: string,
+    label: string,
+    type: string,
+}
