@@ -16,7 +16,7 @@ const ProductCard = ({ product } : IProps) => {
     const spanColor = colors.map((color, index) => <SpanColor key={index} style={{background: color}} className={``} />)
 
 return (<>
-    <div className='max-w-sm md:max-w-lg mx-auto p-2 border border-gray-300 flex flex-col space-y-2 rounded-md'>
+    <div className='max-w-sm md:max-w-lg mx-auto p-2 border border-gray-300 flex flex-col space-y-2 rounded-md dark:bg-gray-900'>
         <div className='w-full h-52'>
             <Image src={image} alt={title} className='mb-4 h-full rounded-md shadow' />
         </div>
