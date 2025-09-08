@@ -7,7 +7,7 @@
  *
  */
 
-export function textSlice (text: string, max: number = 60) {
+export function textSlice (text: string, max: number = 55) {
     const textResult = text.length >= max ? `${text.slice(0,max)}...` : text
     return textResult
 }

@@ -228,7 +228,7 @@ export const formList : IFormList[]= [
   },
   {
     id: "image",
-    name: "imageURL",
+    name: "image",
     label: "Product Image URL",
     type: "text"
   },
