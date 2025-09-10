@@ -23,7 +23,7 @@ export const DarkMod = () => {
         <span className="sr-only">Use setting</span>
         <span
             aria-hidden="true"
-            className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
+            className={`${enabled ? 'translate-x-[30px]' : 'translate-x-0'}
             pointer-events-none inline-block h-[26px] w-[26px] transform rounded-full ${enabled ? "bg-black": "bg-white"} shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
         </Switch>

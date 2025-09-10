@@ -2,7 +2,6 @@ import './ProductCard.scss'
 import { Image } from '../UiComponent/Image'
 import { Button } from '../UiComponent/Button'
 import { SpanColor } from '../UiComponent/SpanColor'
-
 import type { IProduct } from '../../interfaces'
 import { textSlice } from '../../Utils/function'
 

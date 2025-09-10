@@ -76,7 +76,7 @@ const App = () => {
 
   return (<>
   <div className="dark:bg-black dark:text-white bg-white text-black">
-    <div className="container max-w-[1200px] mx-auto px-5">
+    <div className="container max-w-6xl mx-auto px-5">
       <nav className="flex items-center justify-between px-5">
         <h1 className="text-3xl font-extrabold font-[cursive]">My <span className="text-cyan-700">Products</span></h1>
         <Button className="bg-indigo-600 hover:bg-indigo-700" width="w-fit" onClick={() => openModal()}>build now</Button>
