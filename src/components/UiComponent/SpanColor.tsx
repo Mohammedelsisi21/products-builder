@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from "react"
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement>{
-    className: string
+    className?: string
 }
 export const SpanColor = ({ className, ...rest } : IProps) => {
   return (

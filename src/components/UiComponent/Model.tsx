@@ -13,7 +13,7 @@ const Model = ({isOpen, closeModal, title, children} : IProps) => {
 return (
     <>
         <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Dialog as="div" className="relative z-1" onClose={closeModal}>
                 <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -26,7 +26,7 @@ return (
                 <div className="fixed inset-0 bg-black/25" />
             </Transition.Child>
                 <div className="fixed inset-0 overflow-y-auto">
-                <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <div className="flex min-h-full items-center justify-center p-4 text-center ">
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -36,10 +36,10 @@ return (
                     leaveFrom="opacity-100 scale-100"
                     leaveTo="opacity-0 scale-95"
                 >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl dark:bg-black bg-white p-6 text-left align-middle shadow-xl transition-all">
                     {title && <Dialog.Title
                         as="h3"
-                        className="text-xl uppercase font-medium leading-6 text-gray-900"
+                        className="text-xl uppercase font-medium leading-6 text-gray-900 dark:text-sky-600"
                     >
                     {title}
                     </Dialog.Title>}

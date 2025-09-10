@@ -67,8 +67,9 @@ const App = () => {
 
     //**  Render */
   const productCardList = shoesApi.map(product => <ProductCard key={product.id} product={product}/>)
+
   const renderFormList = formList.map((form) => <div className="flex flex-col" key={form.id}>
-    <label htmlFor={form.id} className="text-lg text-gray-600 mb-0.5">{form.label}</label>
+    <label htmlFor={form.id} className="text-lg text-gray-600 mb-0.5 dark:text-white">{form.label}</label>
     <Input type={form.type} id={form.id} errorMsg={errorMsg[form.name]} name={form.name} value={product[form.name]} onChange={onChangeHandler}/>
     <MsgError msg={errorMsg[form.name]} />
   </div>)
@@ -82,7 +83,7 @@ const App = () => {
         <Button className="bg-indigo-600 hover:bg-indigo-700" width="w-fit" onClick={() => openModal()}>build now</Button>
         <DarkMod />
       </nav>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
         {productCardList}
         <Model isOpen={isOpen} closeModal={closeModal} title="Add a new product">
           <form className="flex flex-col space-y-3" onSubmit={onSubmitHandler}>

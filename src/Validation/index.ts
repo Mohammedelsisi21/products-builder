@@ -32,8 +32,10 @@ export const ProductValidation = (product : IProduct ) => {
         errors.image = "valid image URL is required!"
     }
 
-    if(!product.price.trim() || isNaN(Number(product.price))) {
+    if(!product.price.trim()) {
         errors.price = "valid price is required!"
+    }else if(isNaN(Number(product.price))) {
+        errors.price = "Enter Price is number"
     }
 
     return errors
