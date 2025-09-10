@@ -11,9 +11,8 @@ interface IProps {
 
 const ProductCard = ({ product } : IProps) => {
 
-    const {id ,image, title, description, colors, price, category} = product
-
-    const spanColor = colors.map((color) => <SpanColor key={id} style={{background: color}} />)
+    const {image, title, description, colors, price, category} = product
+    const spanColor = colors.map((color,index) => <SpanColor key={index} style={{background: color}} />)
 
 return (<>
     <div className='max-w-sm md:max-w-lg mx-auto p-2 border border-gray-300 flex flex-col space-y-2 rounded-md dark:bg-gray-900'>
