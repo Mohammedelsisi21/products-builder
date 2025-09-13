@@ -1,4 +1,6 @@
 import type { IFormList, IProduct } from "../interfaces";
+import { v4 as uuid } from 'uuid';
+
 
 
 import shoes_1 from './../assets/shoes-1.jpg'
@@ -16,12 +18,12 @@ import shoes_11 from './../assets/shoes-11.jpg'
 
 export const shoesApi: IProduct[] = [
   {
-    id: "1",
+    id: uuid(),
     title: "Running Shoes",
     description:
       "Lightweight running shoes designed for speed, comfort, and breathability. Made with mesh fabric and cushioned soles, ideal for both daily training and long-distance running.",
     image: shoes_1,
-    price: "$120",
+    price: "120",
     colors: ["#000000", "#FFFFFF", "#FF0000", "#1E90FF", "#FFD700"],
     category: {
       name: "Sports",
@@ -29,12 +31,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "2",
+    id: uuid(),
     title: "Casual Sneakers",
     description:
       "Stylish sneakers perfect for everyday wear. Crafted with soft materials and flexible rubber outsoles, ensuring comfort and durability throughout your daily activities.",
     image: shoes_2,
-    price: "$90",
+    price: "90",
     colors: ["#1E90FF", "#00FA9A", "#FF6347", "#2E8B57"],
     category: {
       name: "Casual",
@@ -42,12 +44,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "3",
+    id: uuid(),
     title: "Basketball Shoes",
     description:
       "High-top basketball shoes that provide stability, ankle support, and responsive cushioning. Designed with grip soles for better traction during intense court games.",
     image: shoes_3,
-    price: "$150",
+    price: "150",
     colors: ["#FFD700", "#000000", "#FFFFFF", "#228B22", "#8B0000"],
     category: {
       name: "Sports",
@@ -55,12 +57,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "4",
+    id: uuid(),
     title: "Formal Leather Shoes",
     description:
       "Elegant leather shoes built with premium materials and classic design. Perfect for formal occasions, business meetings, and events requiring a professional appearance.",
     image: shoes_4,
-    price: "$200",
+    price: "200",
     colors: ["#654321", "#000000", "#4B3621"],
     category: {
       name: "Formal",
@@ -68,12 +70,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "5",
+    id: uuid(),
     title: "Hiking Boots",
     description:
       "Durable hiking boots designed for rough terrains and outdoor adventures. Featuring water-resistant materials, strong soles, and ankle support for maximum protection.",
     image: shoes_5,
-    price: "$180",
+    price: "180",
     colors: ["#808080", "#2F4F4F", "#8B4513", "#A0522D"],
     category: {
       name: "Outdoor",
@@ -81,12 +83,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "6",
+    id: uuid(),
     title: "Slip-On Shoes",
     description:
       "Comfortable slip-on shoes with an easy-wear design. Lightweight, breathable, and perfect for quick outings, casual walks, and everyday relaxed style.",
     image: shoes_6,
-    price: "$70",
+    price: "70",
     colors: ["#8B4513", "#A52A2A", "#D2691E", "#CD853F"],
     category: {
       name: "Casual",
@@ -94,12 +96,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "7",
+    id: uuid(),
     title: "Loafers",
     description:
       "Classic loafers designed with soft leather and elegant details. Suitable for both casual and semi-formal settings, providing all-day comfort and style.",
     image: shoes_7,
-    price: "$110",
+    price: "110",
     colors: ["#FF4500", "#1E90FF", "#2E8B57", "#000000", "#B22222"],
     category: {
       name: "Formal",
@@ -107,12 +109,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "8",
+    id: uuid(),
     title: "Sandals",
     description:
       "Breathable sandals perfect for summer and hot weather. Made with lightweight straps and cushioned soles, providing comfort during long walks and casual outings.",
     image: shoes_8,
-    price: "$50",
+    price: "50",
     colors: ["#6B4226", "#8B4513", "#DEB887"],
     category: {
       name: "Casual",
@@ -120,12 +122,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "9",
+    id: uuid(),
     title: "Soccer Cleats",
     description:
       "Firm-ground soccer cleats designed for stability and traction. Lightweight upper materials and durable studs provide excellent grip and ball control on the field.",
     image: shoes_9,
-    price: "$130",
+    price: "130",
     colors: ["#2E2E2E", "#556B2F", "#8B7765", "#A9A9A9", "#DC143C"],
     category: {
       name: "Sports",
@@ -133,12 +135,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "10",
+    id: uuid(),
     title: "Winter Boots",
     description:
       "Insulated winter boots built to keep your feet warm and dry. Featuring waterproof materials, thick soles, and fleece lining for maximum comfort in cold weather.",
     image: shoes_10,
-    price: "$160",
+    price: "160",
     colors: ["#000000", "#654321", "#4B3621", "#A0522D"],
     category: {
       name: "Outdoor",
@@ -146,12 +148,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "11",
+    id: uuid(),
     title: "Skate Shoes",
     description:
       "Durable skate shoes with strong grip and cushioning for tricks and skating sessions. Designed with reinforced sides and flexible soles for performance and safety.",
     image: shoes_11,
-    price: "$95",
+    price: "95",
     colors: ["#00CED1", "#2E2E2E", "#FF4500"],
     category: {
       name: "Sports",
@@ -159,12 +161,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "12",
+    id: uuid(),
     title: "High Heels",
     description:
       "Elegant high-heel shoes crafted with premium materials and sleek design. Perfect for parties, weddings, and events where you want to stand out with style.",
     image: shoes_5,
-    price: "$140",
+    price: "140",
     colors: ["#1A1A1A", "#FFFFFF", "#FF5733", "#C70039", "#900C3F", "#581845", "#DAF7A6", "#FFD700"],
     category: {
       name: "Fashion",
@@ -172,12 +174,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "13",
+    id: uuid(),
     title: "Trail Running Shoes",
     description:
       "Shoes built for trail running with rugged soles for grip and breathable mesh for ventilation. Perfect for uneven terrains and outdoor athletes.",
     image: shoes_1,
-    price: "$125",
+    price: "125",
     colors: ["#006400", "#FF4500", "#8B4513", "#000000"],
     category: {
       name: "Sports",
@@ -185,12 +187,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "14",
+    id: uuid(),
     title: "Oxford Shoes",
     description:
       "Classic Oxford shoes with polished leather and timeless design. Ideal for business, weddings, and any formal occasion requiring sophistication.",
     image: shoes_4,
-    price: "$210",
+    price: "210",
     colors: ["#000000", "#4B3621", "#8B4513"],
     category: {
       name: "Formal",
@@ -198,12 +200,12 @@ export const shoesApi: IProduct[] = [
     },
   },
   {
-    id: "15",
+    id: uuid(),
     title: "Beach Flip-Flops",
     description:
       "Light and comfortable flip-flops perfect for the beach or poolside. Water-friendly and designed with soft straps for casual summer wear.",
     image: shoes_8,
-    price: "$40",
+    price: "40",
     colors: ["#FFD700", "#FF6347", "#00CED1", "#2E8B57"],
     category: {
       name: "Casual",
@@ -238,4 +240,29 @@ export const formList : IFormList[]= [
     label: "Product Price",
     type: "text"
   },
+]
+
+
+
+export const colors: string[] =[
+  "#F5F5DC",
+  "#D2B48C",
+  "#C3B091",
+  "#EEDFCC",
+  "#E3DAC9",
+  "#F0EAD6",
+  "#D8CAB8",
+  "#CDB79E",
+  "#F8F0E3",
+  "#F5F5F5",
+  "#ADD8E6",
+  "#B0E0E6",
+  "#AFEEEE",
+  "#98FB98",
+  "#90EE90",
+  "#FFA07A",
+  "#FFB6C1",
+  "#FFE4C4",
+  "#FFF8DC",
+  "#F5DEB3"
 ]

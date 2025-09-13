@@ -1,10 +1,10 @@
-import type { ButtonHTMLAttributes } from "react"
+import type { HTMLAttributes } from "react"
 
-interface IProps extends ButtonHTMLAttributes<HTMLButtonElement>{
-    className?: string
+interface IProps extends HTMLAttributes<HTMLSpanElement>{
+    color: string
 }
-export const SpanColor = ({ className, ...rest } : IProps) => {
+export const SpanColor = ({ color, ...rest } : IProps) => {
   return (
-    <span className={`${className} w-5 h-5 rounded-full shadow border border-gray-300 cursor-pointer focus:border focus:border-gray-300 focus:p-1`} { ...rest } />
+    <span className={`w-5 h-5 rounded-full shadow border border-gray-300 cursor-pointer focus:border focus:border-gray-300 focus:p-1`} { ...rest } style={{background: color}}/>
   )
 }

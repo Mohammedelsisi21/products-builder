@@ -1,4 +1,4 @@
-import { formList, shoesApi } from "./data"
+import { colors, formList, shoesApi } from "./data"
 import ProductCard from "./components/ProductCard/ProductCard"
 import Model from "./components/UiComponent/Model"
 import { useState, type ChangeEvent, type FormEvent } from "react"
@@ -8,11 +8,16 @@ import type { IProduct } from "./interfaces"
 import { ProductValidation } from "./Validation"
 import { MsgError } from "./components/UiComponent/MsgError"
 import { DarkMod } from "./components/UiComponent/DarkMod"
+import { SpanColor } from "./components/UiComponent/SpanColor"
+// import { BtnUp } from "./components/UiComponent/BtnUp"
+import { v4 as uuid } from "uuid"
 
 
 const App = () => {
+     // * handel btnup */
 
-    const defaultOjb = {
+
+     const defaultOjb = {
       title: "",
       description: "",
       image: "",
@@ -26,9 +31,10 @@ const App = () => {
 
     // **  State */
     const [isOpen, setIsOpen] = useState(false)
+    const [products, setProducts] = useState<IProduct[]>(shoesApi)
     const [product, setproduct] = useState<IProduct>(defaultOjb)
     const [errorMsg, setErrorMsg] = useState({title: "", description: "", image: "", price: ""})
-
+    const [tempColor, setTempColor] = useState<string[]>([])
     // ** Handler */
     const closeModal = ()=> setIsOpen(false)
     const openModal = ()=> setIsOpen(true)
@@ -58,15 +64,21 @@ const App = () => {
         setErrorMsg(errors)
         return
       }
+
+      setProducts(prev => [ {...product, id: uuid(), colors: tempColor} ,...prev])
+      setproduct(defaultOjb)
+      setTempColor([])
+      closeModal()
     }
 
     const onCanselHandler = () => {
       setproduct(defaultOjb)
       closeModal()
+      
     }
 
     //**  Render */
-  const productCardList = shoesApi.map(product => <ProductCard key={product.id} product={product}/>)
+  const productCardList = products.map(product => <ProductCard key={product.id} product={product}/>)
 
   const renderFormList = formList.map((form) => <div className="flex flex-col" key={form.id}>
     <label htmlFor={form.id} className="text-lg text-gray-600 mb-0.5 dark:text-white">{form.label}</label>
@@ -74,10 +86,21 @@ const App = () => {
     <MsgError msg={errorMsg[form.name]} />
   </div>)
 
+  const renderCircleColor = colors.map(
+    (color) =>(
+        <SpanColor key={color} color={color} onClick={() => {
+          if(tempColor.includes(color)) {
+            setTempColor(prev => prev.filter(item => item != color))
+            return;
+          }
+          setTempColor((prev) => [...prev, color])
+        }}/>
+      )
+  )
 
   return (<>
   <div className="dark:bg-black dark:text-white bg-white text-black">
-    <div className="container max-w-6xl mx-auto px-5">
+    <div className="container max-w-6xl mx-auto px-5 relative">
       <nav className="flex items-center justify-between px-5">
         <h1 className="text-3xl font-extrabold font-[cursive]">My <span className="text-cyan-700">Products</span></h1>
         <Button className="bg-indigo-600 hover:bg-indigo-700" width="w-fit" onClick={() => openModal()}>build now</Button>
@@ -88,6 +111,14 @@ const App = () => {
         <Model isOpen={isOpen} closeModal={closeModal} title="Add a new product">
           <form className="flex flex-col space-y-3" onSubmit={onSubmitHandler}>
             {renderFormList}
+            <div className="flex items-center space-x-1 flex-wrap space-y-1">
+              {tempColor.map(color => <span key={color} className="text-gray-700 p-1 rounded mb-1 cursor-pointer" style={{background: color}}
+              onClick={() => setTempColor(tempColor.filter(item => item != color))}
+              >{color}</span>)}
+            </div>
+            <div className="flex items-center space-x-1 flex-wrap space-y-1">
+              {renderCircleColor}
+            </div>
             <div className="flex items-center space-x-3">
               <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full'>submit</Button>
               <Button className='bg-gray-400 hover:bg-gray-500' width='w-full' onClick={onCanselHandler}>cansel</Button>
@@ -95,6 +126,7 @@ const App = () => {
           </form>
         </Model>
       </div>
+    {/* <BtnUp /> */}
     </div>
   </div>
   </>)
