@@ -268,7 +268,6 @@ const App = () => {
             </div>
         </Model>
       </div>
-    {/* <BtnUp />  */}
     </div>
     <Toaster />
   </div>
