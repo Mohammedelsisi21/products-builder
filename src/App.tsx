@@ -1,4 +1,4 @@
-import { colors, formList, shoesApi } from "./data"
+import { categories, colors, formList, shoesApi } from "./data"
 import ProductCard from "./components/ProductCard/ProductCard"
 import Model from "./components/UiComponent/Model"
 import { useState, type ChangeEvent, type FormEvent } from "react"
@@ -11,6 +11,7 @@ import { DarkMod } from "./components/UiComponent/DarkMod"
 import { SpanColor } from "./components/UiComponent/SpanColor"
 // import { BtnUp } from "./components/UiComponent/BtnUp"
 import { v4 as uuid } from "uuid"
+import Select from "./components/UiComponent/Select"
 
 
 const App = () => {
@@ -31,13 +32,21 @@ const App = () => {
 
     // **  State */
     const [isOpen, setIsOpen] = useState(false)
+    const [isOpenEditModal, setIsOpenEditModal] = useState(false)
+
     const [products, setProducts] = useState<IProduct[]>(shoesApi)
     const [product, setproduct] = useState<IProduct>(defaultOjb)
+    const [productToEdit, setProductToEdit] = useState<IProduct>(defaultOjb)
     const [errorMsg, setErrorMsg] = useState({title: "", description: "", image: "", price: ""})
     const [tempColor, setTempColor] = useState<string[]>([])
+    const [selectedCategory, setSelectedCategory] = useState(categories[0])
+    console.log(productToEdit)
     // ** Handler */
     const closeModal = ()=> setIsOpen(false)
     const openModal = ()=> setIsOpen(true)
+    const closeEditModal = ()=> setIsOpenEditModal(false)
+    const openEditModal = ()=> setIsOpenEditModal(true)
+
 
     const onChangeHandler = (event : ChangeEvent<HTMLInputElement>) =>{
       const { value ,name } = event.target
@@ -65,7 +74,7 @@ const App = () => {
         return
       }
 
-      setProducts(prev => [ {...product, id: uuid(), colors: tempColor} ,...prev])
+      setProducts(prev => [ {...product, id: uuid(), colors: tempColor, category: selectedCategory} ,...prev])
       setproduct(defaultOjb)
       setTempColor([])
       closeModal()
@@ -78,7 +87,7 @@ const App = () => {
     }
 
     //**  Render */
-  const productCardList = products.map(product => <ProductCard key={product.id} product={product}/>)
+  const productCardList = products.map(product => <ProductCard key={product.id} product={product} setProductToEdit={setProductToEdit} openEditModal={openEditModal}/>)
 
   const renderFormList = formList.map((form) => <div className="flex flex-col" key={form.id}>
     <label htmlFor={form.id} className="text-lg text-gray-600 mb-0.5 dark:text-white">{form.label}</label>
@@ -108,9 +117,11 @@ const App = () => {
       </nav>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
         {productCardList}
+                //* Add Modal */
         <Model isOpen={isOpen} closeModal={closeModal} title="Add a new product">
           <form className="flex flex-col space-y-3" onSubmit={onSubmitHandler}>
             {renderFormList}
+            <Select selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
             <div className="flex items-center space-x-1 flex-wrap space-y-1">
               {tempColor.map(color => <span key={color} className="text-gray-700 p-1 rounded mb-1 cursor-pointer" style={{background: color}}
               onClick={() => setTempColor(tempColor.filter(item => item != color))}
@@ -122,6 +133,28 @@ const App = () => {
             <div className="flex items-center space-x-3">
               <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full'>submit</Button>
               <Button className='bg-gray-400 hover:bg-gray-500' width='w-full' onClick={onCanselHandler}>cansel</Button>
+            </div>
+          </form>
+        </Model>
+
+
+
+
+                //* Edit Modal */
+        <Model isOpen={isOpenEditModal} closeModal={closeEditModal} title="Edit a product">
+          <form className="flex flex-col space-y-3" onSubmit={onSubmitHandler}>
+            {renderFormList}
+            <Select selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+            <div className="flex items-center space-x-1 flex-wrap space-y-1">
+              {tempColor.map(color => <span key={color} className="text-gray-700 p-1 rounded mb-1 cursor-pointer" style={{background: color}}
+              onClick={() => setTempColor(tempColor.filter(item => item != color))}
+              >{color}</span>)}
+            </div>
+            <div className="flex items-center space-x-1 flex-wrap space-y-1">
+              {renderCircleColor}
+            </div>
+            <div className="flex items-center space-x-3">
+              <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full'>Edit</Button>
             </div>
           </form>
         </Model>

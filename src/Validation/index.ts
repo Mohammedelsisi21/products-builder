@@ -6,6 +6,7 @@ interface IProduct {
     description: string,
     image: string,
     price: string,
+    
 }
 
 

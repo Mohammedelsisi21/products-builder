@@ -7,13 +7,20 @@ import { textSlice } from '../../Utils/function'
 
 interface IProps {
     product: IProduct
+    setProductToEdit: (product: IProduct) => void
+    openEditModal: () => void
 }
 
-const ProductCard = ({ product } : IProps) => {
+const ProductCard = ({ product,setProductToEdit, openEditModal } : IProps) => {
 
     const {image, title, description, colors, price, category} = product
     const spanColor = colors.map((color) => <SpanColor key={color} color={color} />)
 
+    const onEdit =() => {
+        setProductToEdit(product)
+        openEditModal()
+    }
+    
 return (<>
     <div className='max-w-sm md:max-w-lg mx-auto p-2 border border-gray-300 flex flex-col space-y-2 rounded-md dark:bg-gray-900'>
         <div className='w-full h-52'>
@@ -32,7 +39,7 @@ return (<>
             </div>
         </div>
         <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 items-center'>
-            <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full'>Edit</Button>
+            <Button className='bg-indigo-600 hover:bg-indigo-700' width='w-full' onClick={onEdit}>Edit</Button>
             <Button className='bg-red-600 hover:bg-red-700' width="w-full">delete</Button>
         </div>
     </div>

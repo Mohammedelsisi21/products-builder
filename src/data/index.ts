@@ -1,4 +1,4 @@
-import type { IFormList, IProduct } from "../interfaces";
+import type { ICategory, IFormList, IProduct } from "../interfaces";
 import { v4 as uuid } from 'uuid';
 
 
@@ -265,4 +265,61 @@ export const colors: string[] =[
   "#FFE4C4",
   "#FFF8DC",
   "#F5DEB3"
+]
+
+
+export const categories: ICategory[] = [
+  {
+    id: uuid(),
+    name: "Sports",
+    image: shoes_1,
+  },{ 
+    id: uuid(),
+    name: "Formal",
+    image: shoes_4,
+  },{
+    id: uuid(),
+    name: "Outdoor",
+    image: shoes_3,
+  },{
+    id: uuid(),
+    name: "Casual",
+    image: shoes_2,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },{
+    id: uuid(),
+    name: "Fashion",
+    image: shoes_5,
+  },
 ]
