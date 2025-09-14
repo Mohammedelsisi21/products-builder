@@ -1,3 +1,4 @@
+import type { TProducatNames } from "../types";
 
 export interface IProduct {
     id?: string | undefined;
@@ -15,7 +16,7 @@ export interface IProduct {
 
 export interface IFormList {
     id: string,
-    name: "title" | "description" | "image" | "price",
+    name: TProducatNames,
     label: string,
     type: string,
 }

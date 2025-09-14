@@ -23,7 +23,7 @@ return (
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
                 >
-                <div className="fixed inset-0 bg-black/25" />
+                <div className="fixed inset-0 backdrop-blur-sm" />
             </Transition.Child>
                 <div className="fixed inset-0 overflow-y-auto">
                 <div className="flex min-h-full items-center justify-center p-4 text-center ">
@@ -39,7 +39,7 @@ return (
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl dark:bg-black bg-white p-6 text-left align-middle shadow-xl transition-all">
                     {title && <Dialog.Title
                         as="h3"
-                        className="text-xl uppercase font-medium leading-6 text-gray-900 dark:text-sky-600"
+                        className="text-xl capitalize font-medium leading-6 text-gray-900 dark:text-sky-600"
                     >
                     {title}
                     </Dialog.Title>}

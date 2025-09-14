@@ -7,7 +7,7 @@ import { categories } from '../../data'
 import type { ICategory } from '../../interfaces'
 
 interface IProps {
-  selectedCategory : ICategory,
+  selectedCategory : {name: string, image: string},
   setSelectedCategory : (category : ICategory) => void
 }
 

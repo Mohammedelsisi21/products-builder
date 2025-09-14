@@ -16,6 +16,7 @@
     "generate-react-cli": "^9.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hot-toast": "^2.6.0",
     "sass": "^1.92.1",
     "tailwindcss": "^4.1.13",
     "uuid": "^13.0.0"
