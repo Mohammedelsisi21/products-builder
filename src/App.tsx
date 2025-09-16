@@ -116,7 +116,7 @@ const App = () => {
         image: productToEdit.image,
         price: productToEdit.price,
       })
-      const hasError = Object.values(errors).some(value => value === "") && Object.values(errors).every(value => value === "")
+      const hasError = Object.values(errors).every(value => value === "")
       if (!hasError) {
         setErrorMsg(errors)
         return
