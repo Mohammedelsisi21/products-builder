@@ -18,8 +18,6 @@ import toast, { Toaster } from "react-hot-toast"
 
 const App = () => {
      // * handel btnup */
-
-
      const defaultOjb = {
       title: "",
       description: "",
@@ -31,23 +29,20 @@ const App = () => {
         image: ""
       }
     }
-
+    
     // **  State */
     const [isOpen, setIsOpen] = useState(false)
+    const [enabledDark, setEnabledDark] = useState(false)
     const [isOpenEditModal, setIsOpenEditModal] = useState<boolean>(false)
     const [isOpenConfirmModal, setISOpenConfirmModal] = useState<boolean>(false)
-
     const [Productindex, setProductindex] = useState<number>(0)
-      const isDark = document.documentElement.classList.contains("dark")
-
-
     const [products, setProducts] = useState<IProduct[]>(shoesApi)
     const [product, setproduct] = useState<IProduct>(defaultOjb)
     const [productToEdit, setProductToEdit] = useState<IProduct>(defaultOjb)
     const [errorMsg, setErrorMsg] = useState({title: "", description: "", image: "", price: ""})
     const [tempColor, setTempColor] = useState<string[]>([])
     const [selectedCategory, setSelectedCategory] = useState(categories[0])
-    console.log(productToEdit)
+    const isDark = document.documentElement.classList.contains("dark")
     // ** Handler */
     const closeModal = ()=> setIsOpen(false)
     const openModal = ()=> setIsOpen(true)
@@ -68,6 +63,8 @@ const App = () => {
         [name]: ""
       })
     }
+
+
     const onChangeEditHandler = (event : ChangeEvent<HTMLInputElement>) =>{
       const { value ,name } = event.target
       setProductToEdit({
@@ -79,6 +76,8 @@ const App = () => {
         [name]: ""
       })
     }
+
+
     const onSubmitHandler = (event: FormEvent<HTMLFormElement> ): void => {
       event.preventDefault()
       const errors = ProductValidation({
@@ -87,7 +86,9 @@ const App = () => {
         image: product.image,
         price: product.price,
       })
-      const hasError = Object.values(errors).some(value => value === "") && Object.values(errors).every(value => value === "")
+
+      const hasError = Object.values(errors).every(value => value === "")
+
       if (!hasError) {
         setErrorMsg(errors)
         return
@@ -139,7 +140,6 @@ const App = () => {
 
     const onCanselHandler = () => {
       setProductToEdit(defaultOjb)
-      
       closeModal()
     }
 
@@ -204,13 +204,15 @@ const App = () => {
 
   return (<>
   <div className="dark:bg-black dark:text-white bg-white text-black">
-    <div className="container max-w-6xl mx-auto px-5 relative">
-      <nav className="flex items-center justify-between px-5">
-        <h1 className="text-3xl font-extrabold font-[cursive]">My <span className="text-cyan-700">Products</span></h1>
-        <Button className="bg-indigo-600 text-white hover:bg-indigo-700" width="w-fit" onClick={() => openModal()}>build now</Button>
-        <DarkMod />
+    <div className="container max-w-6xl pt-10 mx-auto px-5 relative">
+      <nav className="flex items-center justify-between px-10 py-3 border border-gray-300 shadow rounded-2xl">
+        <div className="flex space-x-5 items-center">
+          <h1 className="text-3xl font-extrabold font-[cursive]">My <span className="text-cyan-700">Products</span></h1>
+          <Button className="bg-indigo-700 text-white hover:bg-indigo-800" width="w-fit" onClick={() => openModal()}>build now</Button>
+        </div>
+        <DarkMod enabledDark={enabledDark} setEnabledDark={setEnabledDark}/>
       </nav>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 py-5">
         {productCardList}
                 {/* Add Modal  */}
         <Model isOpen={isOpen} closeModal={closeModal} title="Add a new product">
