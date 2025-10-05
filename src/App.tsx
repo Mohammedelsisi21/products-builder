@@ -1,7 +1,7 @@
 import { categories, colors, formList, shoesApi } from "./data"
 import ProductCard from "./components/ProductCard/ProductCard"
 import Model from "./components/UiComponent/Modal"
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useCallback, useState, type ChangeEvent, type FormEvent } from "react"
 import { Button } from "./components/UiComponent/Button"
 import { Input } from "./components/UiComponent/Input"
 import type { IProduct } from "./interfaces"
@@ -44,25 +44,19 @@ const App = () => {
     const [selectedCategory, setSelectedCategory] = useState(categories[0])
     const isDark = document.documentElement.classList.contains("dark")
     // ** Handler */
-    const closeModal = ()=> setIsOpen(false)
-    const openModal = ()=> setIsOpen(true)
+    const closeModal = useCallback(()=> setIsOpen(false),[])
+    const openModal = useCallback(()=> setIsOpen(true),[])
     const closeEditModal = ()=> setIsOpenEditModal(false)
-    const openEditModal = ()=> setIsOpenEditModal(true)
+    const openEditModal = useCallback(()=> setIsOpenEditModal(true), [])
     const closeConfirmModal = ()=> setISOpenConfirmModal(false)
-    const openConfirmModal = ()=> setISOpenConfirmModal(true)
+    const openConfirmModal = useCallback(() => setISOpenConfirmModal(true), [])
 
 
-    const onChangeHandler = (event : ChangeEvent<HTMLInputElement>) =>{
+    const onChangeHandler = useCallback((event : ChangeEvent<HTMLInputElement>) =>{
       const { value ,name } = event.target
-      setproduct({
-        ...product,
-        [name]: value
-      })
-      setErrorMsg({
-        ...errorMsg,
-        [name]: ""
-      })
-    }
+      setproduct(prev => ({...prev,[name]: value}))
+      setErrorMsg(prev => {return {...prev,[name]: ""}})
+    },[])
 
 
     const onChangeEditHandler = (event : ChangeEvent<HTMLInputElement>) =>{

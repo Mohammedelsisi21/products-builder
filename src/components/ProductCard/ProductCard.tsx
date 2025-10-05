@@ -4,6 +4,7 @@ import { Button } from '../UiComponent/Button'
 import { SpanColor } from '../UiComponent/SpanColor'
 import type { IProduct } from '../../interfaces'
 import { editPriceComaa, textSlice } from '../../Utils/function'
+import { memo } from 'react'
 
 interface IProps {
     product: IProduct
@@ -55,4 +56,4 @@ return (<>
 </>)
 }
 
-export default ProductCard
+export default memo(ProductCard)

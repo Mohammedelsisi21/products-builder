@@ -1,3 +1,4 @@
+import { memo } from "react"
 
 interface IProps {
     src: string,
@@ -5,8 +6,8 @@ interface IProps {
     className: string
 }
 
-export const Image = ({src, alt, className}: IProps) => {
+export const Image = memo(({src, alt, className}: IProps) => {
   return (
     <img src={src} alt={alt} className={className} />
   )
-}
+})

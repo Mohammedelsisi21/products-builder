@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {memo, useEffect} from 'react'
 import { Switch } from '@headlessui/react'
 
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
     setEnabledDark: (value: boolean) => void
 }
 
-export const DarkMod = ({enabledDark, setEnabledDark} : IProps) => {
+export const DarkMod = memo(({enabledDark, setEnabledDark} : IProps) => {
 
     useEffect(() => {
     if (enabledDark) {
@@ -33,4 +33,4 @@ export const DarkMod = ({enabledDark, setEnabledDark} : IProps) => {
         </Switch>
     </div>
 )
-}
+})

@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react"
+import { memo, type ButtonHTMLAttributes, type ReactNode } from "react"
 
 type TWidth = "w-fit" | "w-full"
 
@@ -7,8 +7,8 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string,
   width: TWidth
 }
-export const Button = ({children, className, width, ...rest} : IProps) => {
+export const Button = memo(({children, className, width, ...rest} : IProps) => {
   return (
     <button className={`${className} rounded-md p-2 capitalize transition-all duration-300 font-bold ${width}`} { ...rest }>{children}</button>
   )
-}
+})
