@@ -8,6 +8,6 @@ interface IProps {
 
 export const Image = memo(({src, alt, className}: IProps) => {
   return (
-    <img src={src} alt={alt} className={className} />
+    <img src={src} alt={alt} className={className} loading="lazy"/>
   )
 })

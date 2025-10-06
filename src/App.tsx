@@ -1,15 +1,14 @@
 import { categories, colors, formList, shoesApi } from "./data"
 import ProductCard from "./components/ProductCard/ProductCard"
 import Model from "./components/UiComponent/Modal"
-import { useCallback, useState, type ChangeEvent, type FormEvent } from "react"
+import { useCallback, useRef, useState, type ChangeEvent, type FormEvent } from "react"
 import { Button } from "./components/UiComponent/Button"
-import { Input } from "./components/UiComponent/Input"
+import Input from "./components/UiComponent/Input"
 import type { IProduct } from "./interfaces"
 import { ProductValidation } from "./Validation"
 import { MsgError } from "./components/UiComponent/MsgError"
 import { DarkMod } from "./components/UiComponent/DarkMod"
 import { SpanColor } from "./components/UiComponent/SpanColor"
-// import { BtnUp } from "./components/UiComponent/BtnUp"
 import { v4 as uuid } from "uuid"
 import Select from "./components/UiComponent/Select"
 import type { TProducatNames } from "./types"
@@ -29,7 +28,13 @@ const App = () => {
         image: ""
       }
     }
-    
+    const inputRefs = {
+    title: useRef<HTMLInputElement>(null),
+    description: useRef<HTMLInputElement>(null),
+    image: useRef<HTMLInputElement>(null),
+    price: useRef<HTMLInputElement>(null),
+  }
+
     // **  State */
     const [isOpen, setIsOpen] = useState(false)
     const [enabledDark, setEnabledDark] = useState(false)
@@ -37,7 +42,7 @@ const App = () => {
     const [isOpenConfirmModal, setISOpenConfirmModal] = useState<boolean>(false)
     const [Productindex, setProductindex] = useState<number>(0)
     const [products, setProducts] = useState<IProduct[]>(shoesApi)
-    const [product, setproduct] = useState<IProduct>(defaultOjb)
+    const [, setproduct] = useState<IProduct>(defaultOjb)
     const [productToEdit, setProductToEdit] = useState<IProduct>(defaultOjb)
     const [errorMsg, setErrorMsg] = useState({title: "", description: "", image: "", price: ""})
     const [tempColor, setTempColor] = useState<string[]>([])
@@ -46,40 +51,28 @@ const App = () => {
     // ** Handler */
     const closeModal = useCallback(()=> setIsOpen(false),[])
     const openModal = useCallback(()=> setIsOpen(true),[])
-    const closeEditModal = ()=> setIsOpenEditModal(false)
+    const closeEditModal = useCallback(()=> setIsOpenEditModal(false),[])
     const openEditModal = useCallback(()=> setIsOpenEditModal(true), [])
-    const closeConfirmModal = ()=> setISOpenConfirmModal(false)
+    const closeConfirmModal = useCallback(()=> setISOpenConfirmModal(false),[])
     const openConfirmModal = useCallback(() => setISOpenConfirmModal(true), [])
 
 
-    const onChangeHandler = useCallback((event : ChangeEvent<HTMLInputElement>) =>{
+    const onChangeEditHandler = useCallback((event : ChangeEvent<HTMLInputElement>) =>{
       const { value ,name } = event.target
-      setproduct(prev => ({...prev,[name]: value}))
-      setErrorMsg(prev => {return {...prev,[name]: ""}})
+      setProductToEdit(prev => ({...prev,[name]: value}))
+      setErrorMsg(prev => ({...prev,[name]: ""}))
     },[])
-
-
-    const onChangeEditHandler = (event : ChangeEvent<HTMLInputElement>) =>{
-      const { value ,name } = event.target
-      setProductToEdit({
-        ...productToEdit,
-        [name]: value
-      })
-      setErrorMsg({
-        ...errorMsg,
-        [name]: ""
-      })
-    }
 
 
     const onSubmitHandler = (event: FormEvent<HTMLFormElement> ): void => {
       event.preventDefault()
-      const errors = ProductValidation({
-        title: product.title,
-        description: product.description,
-        image: product.image,
-        price: product.price,
-      })
+      const productData = {
+        title: inputRefs.title.current?.value || "",
+        description: inputRefs.description.current?.value || "",
+        image: inputRefs.image.current?.value || "",
+        price: inputRefs.price.current?.value || "",
+    }
+      const errors = ProductValidation(productData)
 
       const hasError = Object.values(errors).every(value => value === "")
 
@@ -87,8 +80,13 @@ const App = () => {
         setErrorMsg(errors)
         return
       }
+  
+      setProducts(prev => [ {...productData, id: uuid(), colors: tempColor, category: selectedCategory} ,...prev])
 
-      setProducts(prev => [ {...product, id: uuid(), colors: tempColor, category: selectedCategory} ,...prev])
+      Object.values(inputRefs).forEach(ref => {
+        if(ref.current) ref.current.value = ""
+      })
+
       setproduct(defaultOjb)
       setTempColor([])
       closeModal()
@@ -141,6 +139,7 @@ const App = () => {
       const fillterDeleted = products.filter(product => product.id != productToEdit.id)
       setProducts(fillterDeleted)
       closeConfirmModal()
+
       toast.success("Product deleted successfully!",{
         icon: '👏',
         style: {
@@ -164,7 +163,7 @@ const App = () => {
 
   const renderFormList = formList.map((form) => <div className="flex flex-col" key={form.id}>
     <label htmlFor={form.id} className="text-lg text-gray-600 mb-0.5 dark:text-white">{form.label}</label>
-    <Input type={form.type} id={form.id} errorMsg={errorMsg[form.name]} name={form.name} value={product[form.name]} onChange={onChangeHandler}/>
+    <Input ref={inputRefs[form.name]} type={form.type} id={form.id} errorMsg={errorMsg[form.name]} name={form.name}/>
     <MsgError msg={errorMsg[form.name]} />
   </div>)
 
@@ -246,7 +245,7 @@ const App = () => {
             </div>
             <div className="flex items-center space-x-1 flex-wrap space-y-1">
               {renderCircleColor}
-            </div> 
+            </div>
 
             <div className="flex items-center space-x-3">
               <Button className='bg-indigo-600 text-white hover:bg-indigo-700' width='w-full'>Edit</Button>
