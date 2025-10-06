@@ -2,18 +2,17 @@ import type { ICategory, IFormList, IProduct } from "../interfaces";
 import { v4 as uuid } from 'uuid';
 
 
-
-import shoes_1 from './../assets/shoes-1.jpg'
-import shoes_2 from './../assets/shoes-2.jpg'
-import shoes_3 from './../assets/shoes-3.jpg'
-import shoes_4 from './../assets/shoes-4.jpg'
-import shoes_5 from './../assets/shoes-5.jpg'
-import shoes_6 from './../assets/shoes-6.jpg'
-import shoes_7 from './../assets/shoes-7.jpg'
-import shoes_8 from './../assets/shoes-8.jpg'
-import shoes_9 from './../assets/shoes-9.jpg'
-import shoes_10 from './../assets/shoes-10.jpg'
-import shoes_11 from './../assets/shoes-11.jpg'
+import shoes_1 from './../assets/shoes-1.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_2 from './../assets/shoes-2.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_3 from './../assets/shoes-3.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_4 from './../assets/shoes-4.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_5 from './../assets/shoes-5.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_6 from './../assets/shoes-6.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_7 from './../assets/shoes-7.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_8 from './../assets/shoes-8.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_9 from './../assets/shoes-9.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_10 from './../assets/shoes-10.webp?w=600;800&format=webp&as=picture&imagetools'
+import shoes_11 from './../assets/shoes-11.webp?w=600;800&format=webp&as=picture&imagetools'
 
 
 export const shoesApi: IProduct[] = [
