@@ -1,0 +1,8 @@
+# robots.txt for Products Builder
+
+# السماح لكل محركات البحث بالزحف لكل الصفحات
+User-agent: *
+Allow: /
+
+# تحديد مكان خريطة الموقع (sitemap)
+Sitemap: https://your-domain.com/sitemap.xml

@@ -34,9 +34,9 @@ const ProductCard = ({ product,setProductToEdit, openEditModal, openConfirmModal
 return (<>
     <div className='max-w-sm md:max-w-lg mx-auto p-2 border border-gray-300 flex flex-col space-y-2 rounded-md dark:bg-gray-900'>
         <div className='w-full lg:w-[238px] h-52'>
-            <Image src={image} alt={title} className='mb-4 h-full w-full rounded-md shadow' />
+            <Image src={image} alt={title} className='mb-4 h-full w-full rounded-md shadow object-cover' />
         </div>
-        <h3 className='font-medium text-xl dark:text-sky-600'>{title.split(" ", 3).join(" ")}</h3>
+        <h2 className='font-medium text-xl dark:text-sky-600'>{title.split(" ", 3).join(" ")}</h2>
         <p className='text-gray-600 font-light text-md dark:text-white'>{textSlice(description)}</p>
         <div className='flex items-center space-x-2 space-y-1'>
             {spanColor.length > 0 ? spanColor: <p className="text-gray-400">Not avilable colors</p>}
@@ -45,12 +45,12 @@ return (<>
             <span className='dark:text-sky-600 text-2xl font-medium text-indigo-600 '>${ editPriceComaa(price) }</span>
             <div className='flex items-center space-x-1'>
                 <span className='dark:text-sky-600 text-sm'>{category.name}</span>
-                <Image src={category.image} alt={category.name} className='w-10 h-10 border border-gray-300 rounded-full object-center' />
+                <Image src={category.image} alt={category.name} className='w-10 h-10 border object-cover border-gray-300 rounded-full object-center' />
             </div>
         </div>
         <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 items-center'>
             <Button className='bg-indigo-500 text-white hover:bg-indigo-600' width='w-full' onClick={onEdit}>Edit</Button>
-            <Button className='bg-rose-500 text-white hover:bg-rose-700' width="w-full" onClick={onDelet}>delete</Button>
+            <Button className='bg-rose-700 text-white hover:bg-rose-800 rounded-md p-2 capitalize transition' width="w-full" onClick={onDelet}>delete</Button>
         </div>
     </div>
 </>)
