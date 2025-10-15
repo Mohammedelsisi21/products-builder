@@ -8,6 +8,6 @@ import { imagetools } from 'vite-imagetools'
 export default defineConfig({
   plugins: [react(),
     tailwindcss(),
-    imagetools()
-  ],
+    imagetools()],
+    base: "/products-builder/"
 })

@@ -45,7 +45,7 @@ return (<>
             <span className='dark:text-sky-600 text-2xl font-medium text-indigo-600 '>${ editPriceComaa(price) }</span>
             <div className='flex items-center space-x-1'>
                 <span className='dark:text-sky-600 text-sm'>{category.name}</span>
-                <Image src={category.image} alt={category.name} className='w-10 h-10 border object-cover border-gray-300 rounded-full object-center' />
+                <Image src={category.image} alt={category.name} className='w-10 h-10 border object-cover border-gray-300 rounded-full' />
             </div>
         </div>
         <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 items-center'>
